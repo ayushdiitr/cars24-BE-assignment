@@ -1,0 +1,20 @@
+CREATE TABLE "query_logs" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"query_id" uuid NOT NULL,
+	"provider" text NOT NULL,
+	"model" text NOT NULL,
+	"attempt" integer NOT NULL,
+	"iteration" integer NOT NULL,
+	"status" text NOT NULL,
+	"stop_reason" text,
+	"input_tokens" integer,
+	"output_tokens" integer,
+	"cache_read_tokens" integer,
+	"input_cost_usd" numeric(20, 12),
+	"output_cost_usd" numeric(20, 12),
+	"cache_read_cost_usd" numeric(20, 12),
+	"total_cost_usd" numeric(20, 12),
+	"duration_ms" integer NOT NULL,
+	"error" text,
+	"created_at" timestamp with time zone DEFAULT now() NOT NULL
+);
